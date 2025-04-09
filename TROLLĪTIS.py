@@ -4,7 +4,7 @@ tagad = datetime.datetime.now()
 datums = tagad.strftime("%Y-%m-%d")
 
 def galva():
-    with sqlite3.connect("tkrekli.db") as conn:
+    with sqlite3.connect("satiksmes_laiki.db") as conn:
         c = conn.cursor()
 
         TROLLIS(c)
@@ -21,7 +21,7 @@ def TROLLIS(c):
             if jaut1 == "N":
                 jaut2 = input("TRAMVAJS\nAUTOBUSS\nTROLEJBUSS\nPar kuru transportu gribat uzzināt: ")
                 if jaut2 == "TRAMVAJS":
-                    #ŠEIT SARAKSTU AR TRAMVAJA NUMMURIEM
+                    c.execute("SELECT route_short_name FROM routes WHERE route_id LIKE \%bus%\ ").fetchall()
                     jaut_tran = input("Par kuru tramvaju gribat uzzināt: ")
                     datu_bazite_trans(c)
                     break
