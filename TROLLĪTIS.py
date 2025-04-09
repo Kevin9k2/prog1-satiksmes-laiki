@@ -15,9 +15,9 @@ def TROLLIS(c):
     #atbilde = c.fetchall()
     atbilde = ["do", "re", "mi", "fa", "sol"]
     while True:
+        jaut1 = input("Par kuras pieturas laikiem gribat uzzināt? Ja nezinat par kuru rakstat N: ")
         for pieturas_nosaukums in atbilde:
             pietura = pieturas_nosaukums
-            jaut1 = input("Par kuras pieturas laikiem gribat uzzināt? Ja nezinat par kuru rakstat N: ")
             if jaut1 == "N":
                 jaut2 = input("TRAMVAJS\nAUTOBUSS\nTROLEJBUSS\nPar kuru transportu gribat uzzināt: ")
                 if jaut2 == "TRAMVAJS":
@@ -39,6 +39,8 @@ def TROLLIS(c):
                 print("čiki puki")
                 datu_bazite_pietura(c)
                 break
+            else:
+                print("Nepareizi ievadīts vai nav tādas pieturas")
         break
                 
 
