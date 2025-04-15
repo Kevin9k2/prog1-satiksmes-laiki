@@ -33,7 +33,8 @@ def TROLLIS(c):
                     c.execute("SELECT route_short_name FROM routes WHERE route_id LIKE \'%bus%\' ")
                     atbilde = c.fetchall()
                     for rinda in atbilde:
-                        print(rinda)
+                        for CIP in rinda:
+                            print(F"{CIP}")
                     jaut_tran = input("Par kuru autobusu gribat uzzināt: ")
                     datu_bazite_trans(c)
                     lulala = 0
@@ -74,7 +75,7 @@ def datu_bazite_pietura(c):
 
 
 def datu_bazite_trans(c):
-    aaaaa = 0
+    aaa =0
 
 
 
