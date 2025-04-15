@@ -24,24 +24,34 @@ def TROLLIS(c):
                     c.execute("SELECT route_short_name FROM routes WHERE route_id LIKE \%bus%\ ").fetchall()
                     jaut_tran = input("Par kuru tramvaju gribat uzzināt: ")
                     datu_bazite_trans(c)
+                    lulala = 0
                     break
                 elif jaut2 == "AUTOBUSS":
                     #ŠEIT SARAKSTU AR AUTOBUSA NUMMURIEM
                     jaut_tran = input("Par kuru autobusu gribat uzzināt: ")
                     datu_bazite_trans(c)
+                    lulala = 0
                     break
                 elif jaut2 == "TROLEJBUSS":
                     #ŠEIT SARAKSTU AR TROLEJBUSA NUMMURIEM
                     jaut_tran = input("Par kuru trolejbusu gribat uzzināt: ")
                     datu_bazite_trans(c)
+                    lulala = 0
                     break
+                else:
+                    print("Nav tāda.")
             elif jaut1 == pietura:
                 print("čiki puki")
                 datu_bazite_pietura(c)
+                lulala = 0
                 break
             else:
-                print("Nepareizi ievadīts vai nav tādas pieturas")
-        break
+                lulala = 1
+        if lulala == 1:
+            print("Nepareizi ievadīts vai nav tādas pieturas")
+        if lulala == 0:    
+            break
+    
                 
 
 
