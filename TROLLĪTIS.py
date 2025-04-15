@@ -15,7 +15,7 @@ def TROLLIS(c):
     #atbilde = c.fetchall()
     atbilde = ["do", "re", "mi", "fa", "sol"]
     while True:
-        jaut1 = input("Par kuras pieturas laikiem gribat uzzināt? Ja nezinat par kuru rakstat N: ")
+        jaut1 = input("Ja zinat kuru pieturu, rakstat J, Ja nezinat par kuru rakstat N: ")
         for pieturas_nosaukums in atbilde:
             pietura = pieturas_nosaukums
             if jaut1 == "N":
@@ -50,8 +50,8 @@ def TROLLIS(c):
                     break
                 else:
                     print("Nav tāda.")
-            elif jaut1 == pietura:
-                print("čiki puki")
+            elif jaut1 == "J":
+                jaut3 = input("Ierakstiet pieturas nosaukumu:")
                 datu_bazite_pietura(c)
                 lulala = 0
                 break
