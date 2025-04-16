@@ -13,11 +13,12 @@ def galva():
 def TROLLIS(c):
     c.execute("SELECT stop_name FROM stops")
     atbilde = c.fetchall()
+    pieturas = [rinda[0].strip().lower() for rinda in atbilde]
     while True:
-        jaut1 = input("Ja zinat kuru pieturu, rakstat pieturu, Ja nezinat par kuru rakstat N: ")
+        jaut1 = input("Ja zinat kuru pieturu, rakstat pieturu, Ja nezinat par kuru rakstat n: ")
         for pieturas_nosaukums in atbilde:
             pietura = pieturas_nosaukums
-            if jaut1 == "N":
+            if jaut1 == "n":
                 jaut2 = input("TRAMVAJS\nAUTOBUSS\nTROLEJBUSS\nPar kuru transportu gribat uzzināt: ")
                 if jaut2 == "TRAMVAJS":
                     c.execute("SELECT route_short_name FROM routes WHERE route_id LIKE \'%tram%\' ")
@@ -48,6 +49,11 @@ def TROLLIS(c):
                     break
                 else:
                     print("Nav tāda.")
+            elif jaut1 in pieturas:
+                print("fire")
+                datu_bazite_pietura(c)
+                lulala = 0
+                break
             else:
                 lulala = 1
         if lulala == 1:
