@@ -21,31 +21,49 @@ def TROLLIS(c):
             if jaut1 == "n":
                 jaut2 = input("TRAMVAJS\nAUTOBUSS\nTROLEJBUSS\nPar kuru transportu gribat uzzināt: ")
                 if jaut2 == "TRAMVAJS":
-                    c.execute("SELECT route_short_name FROM routes WHERE route_id LIKE \'%tram%\' ")
-                    atbilde = c.fetchall()
-                    for rinda in atbilde:
-                        print(rinda)
-                    jaut_tran = input("Par kuru tramvaju gribat uzzināt: ")
-                    datu_bazite_trans(c)
-                    lulala = 0
+                    while True:
+                        c.execute("SELECT route_short_name FROM routes WHERE route_id LIKE \'%tram%\' ")
+                        atbilde = c.fetchall()
+                        trama = []
+                        for rinda in atbilde:
+                            for cip in rinda:
+                                trama.append (cip)
+                                print(f"{cip} TRAMVAJS")
+                        jaut_tran = input("Par kuru tramvaju gribat uzzināt: ")
+                        datu_bazite_trans(c)
+                        lulala = 0
+                        break
                     break
                 elif jaut2 == "AUTOBUSS":
-                    c.execute("SELECT route_short_name FROM routes WHERE route_id LIKE \'%bus%\' ")
-                    atbilde = c.fetchall()
-                    for rinda in atbilde:
-                        print(rinda)
-                    jaut_tran = input("Par kuru autobusu gribat uzzināt: ")
-                    datu_bazite_trans(c)
-                    lulala = 0
+                     while True:
+                        c.execute("SELECT route_short_name FROM routes WHERE route_id LIKE \'%bus%\' ")
+                        atbilde = c.fetchall()
+                        autot = []
+                        for rinda in atbilde:
+                            for cip in rinda:
+                                autot.append (cip)
+                                print(f"{cip} AUTOBUSS")
+                        jaut_tran = input("Par kuru autobusu gribat uzzināt: ")
+                        datu_bazite_trans(c)
+                        lulala = 0
+                        break
                     break
                 elif jaut2 == "TROLEJBUSS":
-                    c.execute("SELECT route_short_name FROM routes WHERE route_id LIKE \'%trol%\' ")
-                    atbilde = c.fetchall()
-                    for rinda in atbilde:
-                        print(rinda)
-                    jaut_tran = input("Par kuru trolejbusu gribat uzzināt: ")
-                    datu_bazite_trans(c)
-                    lulala = 0
+                    while True:
+                        c.execute("SELECT route_short_name FROM routes WHERE route_id LIKE \'%trol%\' ")
+                        atbilde = c.fetchall()
+                        trole = []
+                        for rinda in atbilde:
+                            for cip in rinda:
+                                trole.append (cip)
+                                print(f"{cip} TROLEJBUSS")
+                        jaut_tran = input("Par kuru trolejbusu gribat uzzināt: ")
+                        if jaut_tran in trole:
+                            datu_bazite_trans(c)
+                            lulala = 0
+                            break
+                        else: 
+                            print("Nav tāda")
                     break
                 else:
                     print("Nav tāda.")
