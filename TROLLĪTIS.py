@@ -15,7 +15,7 @@ def TROLLIS(c):
     atbilde = c.fetchall()
     pieturas = [rinda[0].strip().lower() for rinda in atbilde]
     while True:
-        jaut1 = input("Ja zinat kuru pieturu, rakstat pieturu, Ja nezinat par kuru rakstat n: ")
+        jaut1 = input("Ja zinat kuru pieturu, rakstat pieturu, Ja nezinat par kuru rakstat n: ").strip().lower()
         for pieturas_nosaukums in atbilde:
             pietura = pieturas_nosaukums
             if jaut1 == "n":
