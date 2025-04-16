@@ -30,12 +30,15 @@ def TROLLIS(c):
                                 trama.append (cip)
                                 print(f"{cip} TRAMVAJS")
                         jaut_tran = input("Par kuru tramvaju gribat uzzināt: ")
-                        datu_bazite_trans(c)
-                        lulala = 0
-                        break
+                        if jaut_tran in trama:
+                            datu_bazite_trans(c)
+                            lulala = 0
+                            break
+                        else: 
+                            print("Nav tāda")
                     break
                 elif jaut2 == "AUTOBUSS":
-                     while True:
+                    while True:
                         c.execute("SELECT route_short_name FROM routes WHERE route_id LIKE \'%bus%\' ")
                         atbilde = c.fetchall()
                         autot = []
@@ -44,9 +47,12 @@ def TROLLIS(c):
                                 autot.append (cip)
                                 print(f"{cip} AUTOBUSS")
                         jaut_tran = input("Par kuru autobusu gribat uzzināt: ")
-                        datu_bazite_trans(c)
-                        lulala = 0
-                        break
+                        if jaut_tran in autot:
+                            datu_bazite_trans(c)
+                            lulala = 0
+                            break
+                        else: 
+                            print("Nav tāda")
                     break
                 elif jaut2 == "TROLEJBUSS":
                     while True:
