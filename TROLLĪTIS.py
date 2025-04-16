@@ -35,7 +35,7 @@ def TROLLIS(c):
                         break
                     break
                 elif jaut2 == "AUTOBUSS":
-                     while True:
+                    while True:
                         c.execute("SELECT route_short_name FROM routes WHERE route_id LIKE \'%bus%\' ")
                         atbilde = c.fetchall()
                         autot = []
