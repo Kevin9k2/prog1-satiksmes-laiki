@@ -87,13 +87,34 @@ def TROLLIS(c):
     
                 
 
-
-
-
-
-
 def datu_bazite_pietura(c, jaut1):
+    jaut1 = jaut1.capitalize()
     print(jaut1)
+    transporte = input("Ievadiet, kādu transportu veidu jums vajag (bus, tram, trol): ")
+    if transporte not in ('bus', 'tram', 'trol'):
+        print("Nepareizs transporta veids!")
+        return
+    numbero = int(input("Ievadiet tā transporta ciparu, kuru jums vajag: "))
+    celo = int(input("Turp vai atpakaļ? (0 vai 1): "))
+    if celo not in (0, 1):
+        print("Nepareiza virziena izvēle!")
+        return
+    
+    c.execute(f"""
+        SELECT stop_times.arrival_time 
+        FROM stop_times
+        JOIN stops ON stop_times.stop_id = stops.stop_id
+        JOIN trips ON stop_times.trip_id = trips.trip_id
+        JOIN routes ON trips.route_id = routes.route_id
+        WHERE stops.stop_name = '{jaut1}'
+        AND trips.direction_id = {celo}
+        AND routes.route_id LIKE '%{transporte}%'
+        AND routes.route_short_name = {numbero}
+    """)
+    
+    atbilde = c.fetchall()
+    for rinda in atbilde:
+        print(rinda)
 
 
 
