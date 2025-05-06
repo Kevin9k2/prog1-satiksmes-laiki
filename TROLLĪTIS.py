@@ -75,7 +75,7 @@ def TROLLIS(c):
                     print("Nav tāda.")
             elif jaut1 in pieturas:
                 print("fire")
-                datu_bazite_pietura(c)
+                datu_bazite_pietura(c, jaut1)
                 lulala = 0
                 break
             else:
@@ -92,8 +92,8 @@ def TROLLIS(c):
 
 
 
-def datu_bazite_pietura(c):
-    aaaa = 0
+def datu_bazite_pietura(c, jaut1):
+    print(jaut1)
 
 
 
