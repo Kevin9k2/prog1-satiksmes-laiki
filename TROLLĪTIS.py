@@ -33,8 +33,10 @@ def TROLLIS(c):
                         jaut_tran = input("Par kuru tramvaju gribat uzzināt: ")
                         if jaut_tran in trama:
                             z = 1
-                            datu_bazite_trans(c, jaut_tran, z)
+                            x = datu_bazite_trans(c, jaut_tran, z)
                             lulala = 0
+                            g = 2
+                            BEIGAS(x, g)
                             break
                         else: 
                             print("Nav tāda")
@@ -51,8 +53,10 @@ def TROLLIS(c):
                         jaut_tran = input("Par kuru autobusu gribat uzzināt: ")
                         if jaut_tran in autot:
                             z = 2
-                            datu_bazite_trans(c, jaut_tran, z)
+                            x = datu_bazite_trans(c, jaut_tran, z)
                             lulala = 0
+                            g = 2
+                            BEIGAS(x, g)
                             break
                         else: 
                             print("Nav tāda")
@@ -69,8 +73,10 @@ def TROLLIS(c):
                         jaut_tran = input("Par kuru trolejbusu gribat uzzināt: ")
                         if jaut_tran in trole:
                             z = 3
-                            datu_bazite_trans(c, jaut_tran, z)
+                            x = datu_bazite_trans(c, jaut_tran, z)
                             lulala = 0
+                            g = 2
+                            BEIGAS(x, g)
                             break
                         else: 
                             print("Nav tāda")
@@ -79,8 +85,10 @@ def TROLLIS(c):
                     print("Nav tāda.")
             elif jaut1 in pieturas:
                 print("fire")
-                datu_bazite_pietura(c, jaut1)
+                x = datu_bazite_pietura(c, jaut1) # x-- (viena, otra, tr, cet)
                 lulala = 0
+                g = 1
+                BEIGAS(x, jaut1, g)
                 break
             else:
                 lulala = 1
@@ -117,8 +125,7 @@ def datu_bazite_pietura(c, jaut1):
     """)
     
     atbilde = c.fetchall()
-    for rinda in atbilde:
-        print(rinda)
+    return atbilde, numbero, transporte
 
 
 
@@ -136,5 +143,20 @@ def datu_bazite_trans(c, jaut_tran, z):
         print("ej tu kaka")
 
 
+
+
+
+
+def BEIGAS(x, jaut1, g):
+    if g == 1:
+        if x[2] == "bus":
+            tran = "Autobuss"
+        elif x[2] == "tram":
+            tran = "Tramvajs"
+        elif x[2] == "trol":
+            tran = "Trolejbuss"
+        print (f"{x[1]} {tran} laiki {jaut1} pieturā")
+        for rinda in x[0]:
+            print(rinda)
 
 galva()
