@@ -11,6 +11,7 @@ def galva():
 
 
 def TROLLIS(c):
+    z = 0
     c.execute("SELECT stop_name FROM stops")
     atbilde = c.fetchall()
     pieturas = [rinda[0].strip().lower() for rinda in atbilde]
@@ -31,7 +32,8 @@ def TROLLIS(c):
                                 print(f"{cip} TRAMVAJS")
                         jaut_tran = input("Par kuru tramvaju gribat uzzināt: ")
                         if jaut_tran in trama:
-                            datu_bazite_trans(c)
+                            z = 1
+                            datu_bazite_trans(c, jaut_tran, z)
                             lulala = 0
                             break
                         else: 
@@ -48,7 +50,8 @@ def TROLLIS(c):
                                 print(f"{cip} AUTOBUSS")
                         jaut_tran = input("Par kuru autobusu gribat uzzināt: ")
                         if jaut_tran in autot:
-                            datu_bazite_trans(c)
+                            z = 2
+                            datu_bazite_trans(c, jaut_tran, z)
                             lulala = 0
                             break
                         else: 
@@ -65,7 +68,8 @@ def TROLLIS(c):
                                 print(f"{cip} TROLEJBUSS")
                         jaut_tran = input("Par kuru trolejbusu gribat uzzināt: ")
                         if jaut_tran in trole:
-                            datu_bazite_trans(c)
+                            z = 3
+                            datu_bazite_trans(c, jaut_tran, z)
                             lulala = 0
                             break
                         else: 
@@ -118,8 +122,18 @@ def datu_bazite_pietura(c, jaut1):
 
 
 
-def datu_bazite_trans(c):
-    aaa =0
+def datu_bazite_trans(c, jaut_tran, z):
+    if z == 1:
+        c.execute(f"""
+                  SELECT stops.stop_name 
+                  FROM
+                  """)
+    elif z == 2:
+        lol
+    elif z == 3:
+        lol
+    else:
+        print("ej tu kaka")
 
 
 
