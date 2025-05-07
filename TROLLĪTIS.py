@@ -132,16 +132,48 @@ def datu_bazite_pietura(c, jaut1):
 def datu_bazite_trans(c, jaut_tran, z):
     if z == 1:
         c.execute(f"""
-                  SELECT stops.stop_name 
-                  FROM
-                  """)
+            SELECT DISTINCT stops.stop_name 
+            FROM stops
+            JOIN stop_times ON stops.stop_id = stop_times.stop_id
+            JOIN trips ON stop_times.trip_id = trips.trip_id
+            JOIN routes ON trips.route_id = routes.route_id
+            WHERE routes.route_short_name = {jaut_tran}
+            AND routes.route_id LIKE \'%tram%\'
+        """)
+
+        atbilde = c.fetchall()
+        for rinda in atbilde:
+            print(rinda)
     elif z == 2:
-        lol
+        c.execute(f"""
+            SELECT DISTINCT stops.stop_name 
+            FROM stops
+            JOIN stop_times ON stops.stop_id = stop_times.stop_id
+            JOIN trips ON stop_times.trip_id = trips.trip_id
+            JOIN routes ON trips.route_id = routes.route_id
+            WHERE routes.route_short_name = {jaut_tran}
+            AND routes.route_id LIKE \'%bus%\'
+        """)
+
+        atbilde2 = c.fetchall()
+        for rinda in atbilde2:
+            print(rinda)
     elif z == 3:
-        lol
+        c.execute(f"""
+            SELECT DISTINCT stops.stop_name 
+            FROM stops
+            JOIN stop_times ON stops.stop_id = stop_times.stop_id
+            JOIN trips ON stop_times.trip_id = trips.trip_id
+            JOIN routes ON trips.route_id = routes.route_id
+            WHERE routes.route_short_name = {jaut_tran}
+            AND routes.route_id LIKE \'%trol%\'
+        """)
+
+        atbilde3 = c.fetchall()
+        for rinda in atbilde3:
+            print(rinda)
     else:
         print("ej tu kaka")
-
 
 
 
