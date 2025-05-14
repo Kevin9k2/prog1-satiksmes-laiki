@@ -36,7 +36,7 @@ def TROLLIS(c):
                             x = datu_bazite_trans(c, jaut_tran, z)
                             lulala = 0
                             g = 2
-                            BEIGAS(x, g, z)
+                            BEIGAS(x, g, z, jaut_tran, jaut1)
                             break
                         else: 
                             print("Nav tāda")
@@ -56,7 +56,7 @@ def TROLLIS(c):
                             x = datu_bazite_trans(c, jaut_tran, z)
                             lulala = 0
                             g = 2
-                            BEIGAS(x, g, z)
+                            BEIGAS(x, g, z, jaut_tran, jaut1)
                             break
                         else: 
                             print("Nav tāda")
