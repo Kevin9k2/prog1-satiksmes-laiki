@@ -76,7 +76,7 @@ def TROLLIS(c):
                             x = datu_bazite_trans(c, jaut_tran, z)
                             lulala = 0
                             g = 2
-                            BEIGAS(x, g, z, jaut_tran)
+                            BEIGAS(x, g, z, jaut_tran, jaut1)
                             break
                         else: 
                             print("Nav tāda")
@@ -88,7 +88,7 @@ def TROLLIS(c):
                 x = datu_bazite_pietura(c, jaut1) # x-- (viena, otra, tr, cet)
                 lulala = 0
                 g = 1
-                BEIGAS(x, jaut1, g)
+                BEIGAS(x, g, z, jaut_tran, jaut1)
                 break
             else:
                 lulala = 1
@@ -143,7 +143,8 @@ def datu_bazite_trans(c, jaut_tran, z):
         atbilde = c.fetchall()
         for rinda in atbilde:
             print(rinda)
-        jaut1 = input(" Kuru pieturu").strip().lower()
+        jaut1 = input(" Kuru pieturu ").strip().lower()
+        jaut1 = jaut1.capitalize()
         celo = int(input("Turp vai atpakaļ? (0 vai 1): "))
         if celo not in (0, 1):
             print("Nepareiza virziena izvēle!")
@@ -175,7 +176,8 @@ def datu_bazite_trans(c, jaut_tran, z):
         atbilde2 = c.fetchall()
         for rinda in atbilde2:
             print(rinda)
-        jaut1 = input(" Kuru pieturu").strip().lower()
+        jaut1 = input(" Kuru pieturu ").strip().lower()
+        jaut1 = jaut1.capitalize()
         celo = int(input("Turp vai atpakaļ? (0 vai 1): "))
         if celo not in (0, 1):
             print("Nepareiza virziena izvēle!")
@@ -207,21 +209,22 @@ def datu_bazite_trans(c, jaut_tran, z):
         atbilde3 = c.fetchall()
         for rinda in atbilde3:
             print(rinda)
-        jaut1 = input(" Kuru pieturu").strip().lower()
+        jaut1 = input(" Kuru pieturu ").strip().lower()
+        jaut1 = jaut1.capitalize()
         celo = int(input("Turp vai atpakaļ? (0 vai 1): "))
         if celo not in (0, 1):
             print("Nepareiza virziena izvēle!")
             return
         c.execute(f"""
-        SELECT stop_times.arrival_time 
-        FROM stop_times
-        JOIN stops ON stop_times.stop_id = stops.stop_id
-        JOIN trips ON stop_times.trip_id = trips.trip_id
-        JOIN routes ON trips.route_id = routes.route_id
-        WHERE stops.stop_name = '{jaut1}'
-        AND trips.direction_id = {celo}
-        AND routes.route_id LIKE '%trol%'
-        AND routes.route_short_name = {jaut_tran}
+            SELECT stop_times.arrival_time 
+            FROM stop_times
+            JOIN stops ON stop_times.stop_id = stops.stop_id
+            JOIN trips ON stop_times.trip_id = trips.trip_id
+            JOIN routes ON trips.route_id = routes.route_id
+            WHERE stops.stop_name = '{jaut1}'
+            AND trips.direction_id = {celo}
+            AND routes.route_id LIKE '%trol%'
+            AND routes.route_short_name = {jaut_tran}
         """)
         atbilde = c.fetchall()
         return atbilde, jaut1
@@ -232,7 +235,7 @@ def datu_bazite_trans(c, jaut_tran, z):
 
 
 
-def BEIGAS(x, jaut1, g, z, jaut_tran):
+def BEIGAS(x, g, z, jaut_tran, jaut1):
     if g == 1:
         if x[2] == "bus":
             tran = "Autobuss"
