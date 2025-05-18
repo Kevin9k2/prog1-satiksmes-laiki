@@ -143,8 +143,12 @@ def datu_bazite_trans(c, jaut_tran, z):
         atbilde = c.fetchall()
         for rinda in atbilde:
             print(rinda)
-        jaut1 = input(" Kuru pieturu ").strip().lower()
-        jaut1 = jaut1.capitalize()
+        while True:
+            jaut1 = input(" Kuru pieturu ").strip().lower()
+            jaut1 = jaut1.capitalize()
+            if jaut1 in atbilde:
+                break
+            
         celo = int(input("Turp vai atpakaļ? (0 vai 1): "))
         if celo not in (0, 1):
             print("Nepareiza virziena izvēle!")
