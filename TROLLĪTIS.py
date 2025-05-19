@@ -103,16 +103,19 @@ def TROLLIS(c):
 def datu_bazite_pietura(c, jaut1):
     jaut1 = jaut1.capitalize()
     print(jaut1)
-    transporte = input("Ievadiet, kādu transportu veidu jums vajag (bus, tram, trol): ")
-    if transporte not in ('bus', 'tram', 'trol'):
-        print("Nepareizs transporta veids!")
-        return
+    while True:
+        transporte = input("Ievadiet, kādu transportu veidu jums vajag (bus, tram, trol): ")
+        if transporte not in ('bus', 'tram', 'trol'):
+            print("Nepareizs transporta veids!")
+            break
     numbero = int(input("Ievadiet tā transporta ciparu, kuru jums vajag: "))
-    celo = int(input("Turp vai atpakaļ? (0 vai 1): "))
-    if celo not in (0, 1):
-        print("Nepareiza virziena izvēle!")
-        return
-    
+    while True:    
+            celo = int(input("Turp vai atpakaļ? (0 vai 1): "))
+            if celo not in (0, 1):
+                print("Nepareiza virziena izvēle!")
+            elif celo in (0, 1):
+                break
+
     c.execute(f"""
         SELECT stop_times.arrival_time 
         FROM stop_times
