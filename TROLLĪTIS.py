@@ -87,6 +87,7 @@ def TROLLIS(c):
                 print("fire")
                 x = datu_bazite_pietura(c, jaut1) # x-- (viena, otra, tr, cet)
                 lulala = 0
+                jaut_tran = "nil"
                 g = 1
                 BEIGAS(x, g, z, jaut_tran, jaut1)
                 break
@@ -141,18 +142,22 @@ def datu_bazite_trans(c, jaut_tran, z):
             AND routes.route_id LIKE \'%tram%\'
         """)
         atbilde = c.fetchall()
+        pietur = []
         for rinda in atbilde:
-            print(rinda)
+            for pietura in rinda:
+                pietur.append(pietura)
+                print(pietura)
         while True:
             jaut1 = input(" Kuru pieturu ").strip().lower()
             jaut1 = jaut1.capitalize()
-            if jaut1 in atbilde:
+            if jaut1 in pietur:
                 break
-            
-        celo = int(input("Turp vai atpakaļ? (0 vai 1): "))
-        if celo not in (0, 1):
-            print("Nepareiza virziena izvēle!")
-            return
+        while True:    
+            celo = int(input("Turp vai atpakaļ? (0 vai 1): "))
+            if celo not in (0, 1):
+                print("Nepareiza virziena izvēle!")
+            elif celo in (0, 1):
+                break
         c.execute(f"""
         SELECT stop_times.arrival_time 
         FROM stop_times
@@ -178,14 +183,23 @@ def datu_bazite_trans(c, jaut_tran, z):
         """)
 
         atbilde2 = c.fetchall()
+        pietur = []
         for rinda in atbilde2:
-            print(rinda)
-        jaut1 = input(" Kuru pieturu ").strip().lower()
-        jaut1 = jaut1.capitalize()
-        celo = int(input("Turp vai atpakaļ? (0 vai 1): "))
-        if celo not in (0, 1):
-            print("Nepareiza virziena izvēle!")
-            return
+            for pietura in rinda:
+                pietur.append(pietura)
+                print(pietura)
+        while True:
+            jaut1 = input(" Kuru pieturu ").strip().lower()
+            jaut1 = jaut1.capitalize()
+            if jaut1 in pietur:
+                break
+
+        while True:    
+            celo = int(input("Turp vai atpakaļ? (0 vai 1): "))
+            if celo not in (0, 1):
+                print("Nepareiza virziena izvēle!")
+            elif celo in (0, 1):
+                break
         c.execute(f"""
         SELECT stop_times.arrival_time 
         FROM stop_times
@@ -211,14 +225,22 @@ def datu_bazite_trans(c, jaut_tran, z):
         """)
 
         atbilde3 = c.fetchall()
+        pietur = []
         for rinda in atbilde3:
-            print(rinda)
-        jaut1 = input(" Kuru pieturu ").strip().lower()
-        jaut1 = jaut1.capitalize()
-        celo = int(input("Turp vai atpakaļ? (0 vai 1): "))
-        if celo not in (0, 1):
-            print("Nepareiza virziena izvēle!")
-            return
+            for pietura in rinda:
+                pietur.append(pietura)
+                print(pietura)
+        while True:
+            jaut1 = input(" Kuru pieturu ").strip().lower()
+            jaut1 = jaut1.capitalize()
+            if jaut1 in pietur:
+                break
+        while True:    
+            celo = int(input("Turp vai atpakaļ? (0 vai 1): "))
+            if celo not in (0, 1):
+                print("Nepareiza virziena izvēle!")
+            elif celo in (0, 1):
+                break
         c.execute(f"""
             SELECT stop_times.arrival_time 
             FROM stop_times
@@ -249,7 +271,8 @@ def BEIGAS(x, g, z, jaut_tran, jaut1):
             tran = "Trolejbuss"
         print (f"{x[1]} {tran} laiki {jaut1} pieturā")
         for rinda in x[0]:
-            print(rinda)
+            for laik in rinda:
+                print(laik)
     elif g == 2:
         if z == 1:
             tran = "Tramvajs"
@@ -259,7 +282,8 @@ def BEIGAS(x, g, z, jaut_tran, jaut1):
             tran = "Trolejbuss"
         print (f"{jaut_tran} {tran} laiki {x[1]} pieturā")
         for rinda in x[0]:
-            print(rinda)
+            for laik in rinda:
+                print(laik)
 
 
 galva()
