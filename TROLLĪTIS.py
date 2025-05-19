@@ -109,7 +109,14 @@ def datu_bazite_pietura(c, jaut1):
             print("Nepareizs transporta veids!")
         elif transporte in ('bus', 'tram', 'trol'):
             break
-    numbero = int(input("Ievadiet tā transporta ciparu, kuru jums vajag: "))
+    c.execute(f"SELECT route_short_name FROM routes WHERE route_id LIKE \'%{transporte}%\' ")
+    atbilde = c.fetchall()
+    trama = []
+    for rinda in atbilde:
+        for cip in rinda:
+            trama.append (cip)
+            print(f"{cip} {transporte}")
+    numbero = input("Ievadiet tā transporta ciparu, kuru jums vajag: ")
     while True:    
             celo = int(input("Turp vai atpakaļ? (0 vai 1): "))
             if celo not in (0, 1):
