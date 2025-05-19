@@ -10,7 +10,7 @@ def galva():
         TROLLIS(c)
 
 
-def TROLLIS(c):
+def TROLLIS(c): # Galvenā funkcija, paprasa vai zina kuru pieturu ja nezina tad prasa transportu un tā ciparu
     z = 0
     c.execute("SELECT stop_name FROM stops")
     atbilde = c.fetchall()
@@ -18,7 +18,7 @@ def TROLLIS(c):
     while True:
         jaut1 = input("Ja zinat kuru pieturu, rakstat pieturu, Ja nezinat par kuru rakstat n: ").strip().lower()
         for pieturas_nosaukums in atbilde:
-            pietura = pieturas_nosaukums
+            pietura = pieturas_nosaukums # BEZ ŠITA VISS SABRŪK. NEŅEMT ARA. NEZINAM KAPEC TĀ IR
             if jaut1 == "n":
                 jaut2 = input("TRAMVAJS\nAUTOBUSS\nTROLEJBUSS\nPar kuru transportu gribat uzzināt: ")
                 if jaut2 == "TRAMVAJS":
@@ -85,7 +85,7 @@ def TROLLIS(c):
                     print("Nav tāda.")
             elif jaut1 in pieturas:
                 print("fire")
-                x = datu_bazite_pietura(c, jaut1) # x-- (viena, otra, tr, cet)
+                x = datu_bazite_pietura(c, jaut1) 
                 lulala = 0
                 jaut_tran = "nil"
                 g = 1
@@ -100,7 +100,7 @@ def TROLLIS(c):
     
                 
 
-def datu_bazite_pietura(c, jaut1):
+def datu_bazite_pietura(c, jaut1): #paprasa kuru transporta veidu, ciparu un virzienu grib uzzināt, kas ir saistīti ar pieturu
     jaut1 = jaut1.capitalize()
     print(jaut1)
     while True:
@@ -141,7 +141,7 @@ def datu_bazite_pietura(c, jaut1):
 
 
 
-def datu_bazite_trans(c, jaut_tran, z):
+def datu_bazite_trans(c, jaut_tran, z): #Pārāda un paprasa pietura saistītas ar transporta ciparu
     if z == 1:
         c.execute(f"""
             SELECT DISTINCT stops.stop_name 
@@ -272,7 +272,7 @@ def datu_bazite_trans(c, jaut_tran, z):
 
 
 
-def BEIGAS(x, g, z, jaut_tran, jaut1):
+def BEIGAS(x, g, z, jaut_tran, jaut1): #"smuki" parāda laikus. Funkcija vienkārsī lai parada laikus 
     if g == 1:
         if x[2] == "bus":
             tran = "Autobuss"
