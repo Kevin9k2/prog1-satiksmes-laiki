@@ -107,6 +107,7 @@ def datu_bazite_pietura(c, jaut1):
         transporte = input("Ievadiet, kādu transportu veidu jums vajag (bus, tram, trol): ")
         if transporte not in ('bus', 'tram', 'trol'):
             print("Nepareizs transporta veids!")
+        elif transporte in ('bus', 'tram', 'trol'):
             break
     numbero = int(input("Ievadiet tā transporta ciparu, kuru jums vajag: "))
     while True:    
